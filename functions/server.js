@@ -12,7 +12,7 @@ const app = express()
 const router = express.Router()
 
 /* We need to set our base path for express to match on our function route */
-const functionName = 'standalone-aws-serverless-express-example'
+const functionName = 'server'
 const basePath = `/.netlify/functions/${functionName}/`
 
 router.use(compression())
