@@ -1,0 +1,20 @@
+{
+    "name": "netlify-functions-express",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+      "aws-serverless-express": "^3.2.0",
+      "body-parser": "^1.18.3",
+      "compression": "^1.7.2",
+      "cors": "^2.8.4",
+      "express": "^4.16.3",
+      "isomorphic-fetch": "^2.2.1",
+      "morgan": "^1.9.0",
+      "serverless-http": "^1.6.0",
+      "react": "^16.4.0",
+      "react-dom": "^16.4.0",
+      "react-scripts": "1.1.4",
+      "jsgeoda": "^0.1.8",
+      "sqlite3": "^5.0.2"
+    }
+}
