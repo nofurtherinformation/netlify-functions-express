@@ -5,7 +5,7 @@ import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import compression from 'compression'
 import awsServerlessExpressMiddleware from 'aws-serverless-express/middleware'
-const sqlite3 = require('sqlite3').verbose();
+import * as sqlite3 from 'sqlite3';
 import * as jsgeoda from 'jsgeoda';
 import customLogger from './utils/logger'
 import binaryMimeTypes from './utils/binaryMimeTypes'
@@ -35,43 +35,43 @@ function getDateRange(start, end) {
   return dateArray.join('","')
 }
 
-// connect to db
-const db = new sqlite3.Database('../usaFactsCovid.db', err => {
-  if (err) {
-    return console.error(err.message);
-  }
-  console.log("Successful connection to the database");
-});
+// // connect to db
+// const db = new sqlite3.Database('../usaFactsCovid.db', err => {
+//   if (err) {
+//     return console.error(err.message);
+//   }
+//   console.log("Successful connection to the database");
+// });
 
-const tableTree = {
-  "confirmed": {
-    "usafacts":{
-      "county":"cases",
-      "state":"usaFactsCasesCounty"
-    }
-  },
-  "deaths": {
-    "usafacts":{
-      "county":"deaths",
-      "state":"usaFactsCasesCounty"
-    }
-  }
-}
-
-// make sqlite function like postgres
-db.query = function (sql, params) {
-  var that = this;
-  return new Promise(function (resolve, reject) {
-      that.all(sql, params, function (error, rows) {
-      if (error)
-          reject(error);
-      else
-          resolve({ rows: rows });
-      });
-  });
-};
+// // make sqlite function like postgres
+// db.query = function (sql, params) {
+//   var that = this;
+//   return new Promise(function (resolve, reject) {
+//       that.all(sql, params, function (error, rows) {
+//       if (error)
+//           reject(error);
+//       else
+//           resolve({ rows: rows });
+//       });
+//   });
+// };
 
 router.get('/users', (req, res) => {
+  
+  const tableTree = {
+    "confirmed": {
+      "usafacts":{
+        "county":"cases",
+        "state":"usaFactsCasesCounty"
+      }
+    },
+    "deaths": {
+      "usafacts":{
+        "county":"deaths",
+        "state":"usaFactsCasesCounty"
+      }
+    }
+  }
   res.json(tableTree)
 })
 
