@@ -72,16 +72,7 @@ db.query = function (sql, params) {
 };
 
 router.get('/users', (req, res) => {
-  res.json({
-    users: [
-      {
-        name: 'steve',
-      },
-      {
-        name: 'joe',
-      },
-    ],
-  })
+  res.json(tableTree)
 })
 
 router.get('/', (req, res) => {
