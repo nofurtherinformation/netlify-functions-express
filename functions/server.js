@@ -6,9 +6,9 @@ import bodyParser from 'body-parser'
 import compression from 'compression'
 import awsServerlessExpressMiddleware from 'aws-serverless-express/middleware'
 import * as jsgeoda from 'jsgeoda';
+import * as sqlite3 from 'sqlite3';
 import customLogger from './utils/logger'
 import binaryMimeTypes from './utils/binaryMimeTypes'
-// const sqlite3 = require("sqlite3").verbose();
 
 const app = express()
 const router = express.Router()
